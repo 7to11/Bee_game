@@ -1,0 +1,32 @@
+#......................................................................
+# Writing game data to a text file
+# kohen johnsotn
+# 2024-04-8
+#......................................................................
+#making the file
+def write_game_data(filename, game_data):
+    with open(filename, 'w') as file:
+        for key, value in game_data.items():
+            file.write(f"{key}: {value}\n")
+
+# Reading the game data
+def read_game_data(filename):
+    game_data = {}
+    with open(filename, 'r') as file:
+        for line in file:
+            key, value = line.strip().split(": ")
+            game_data[key] = value
+    return game_data
+
+#file namer
+filename = "Lifeisgood.txt"
+
+#the game data
+game_data = {"high_score": 20, "level": 99, "inventory": ["stinger", "Wings", "Honey"], "player_name": "Beeman"}
+
+# Writes game data to the file
+write_game_data(filename, game_data)
+
+# Reads the game data from the file
+loaded_game_data = read_game_data(filename)
+print("Loaded game data:", loaded_game_data)
